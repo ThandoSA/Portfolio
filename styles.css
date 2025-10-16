@@ -709,12 +709,13 @@ section {
     padding: 1rem;
 }
 
-/* Projects grid: make the project cards into a responsive grid */
+/* Projects: horizontal flex layout on desktop */
 #projects .about-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: flex;
+    flex-direction: row;
     gap: 1.25rem;
-    align-items: start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 /* Project card overrides */
@@ -724,6 +725,7 @@ section {
     align-items: stretch;
     padding: 1rem;
     max-width: none;
+    flex: 0 1 320px; /* fixed card width so cards flow horizontally */
 }
 
 .project-img{
