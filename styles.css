@@ -671,7 +671,31 @@ section {
     padding: 1rem;
 }
 
-.project-img{ width: 100%; max-width: 560px; border-radius: 12px; object-fit: cover; }
+/* Projects grid: make the project cards into a responsive grid */
+#projects .about-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+/* Project card overrides */
+.details-container.color-continer, .details-container.color-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    max-width: none;
+}
+
+.project-img{
+    width: 100%;
+    height: 220px;
+    max-height: 340px;
+    object-fit: cover; /* crop to fill card area */
+    border-radius: 12px;
+    display: block;
+}
 
 .project-btn{ padding: 0.6rem 1rem; border-radius: 12px; background: #fff; border: 1px solid rgba(0,0,0,0.06); transition: all 0.15s ease; }
 .project-btn:hover{ background: limegreen; color: #fff; transform: translateY(-3px); }
@@ -713,15 +737,15 @@ section {
 
 .details-container.color-continer { overflow: visible; }
 
-.project-img {
-    display: block;
-    width: 90%;
-    max-width: 840px;
-    height: 90%; /* allow natural height so full image is visible */
-    object-fit: fill; /* show entire image without cropping */
-    margin: 0 auto;
-    border-radius: 2rem;
+.details-container .btn-container, .color-continer .btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
 }
+
+/* remove previous project-img conflicting rules */
+
 
 /* Ensure parent article/container doesn't force a crop */
 .article-container { align-items: center; }
@@ -730,6 +754,16 @@ section {
 #projects{
     position: relative;
     padding: 3rem 6rem;
+}
+
+@media (max-width: 900px){
+    #projects{ padding: 2.25rem 3rem; }
+}
+
+@media (max-width: 600px){
+    #projects{ padding: 1.5rem 1rem; }
+    #projects .about-container{ grid-template-columns: 1fr; }
+    .project-img{ height: 180px; }
 }
 
 #projects .icon-arrow{
