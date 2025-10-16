@@ -106,6 +106,22 @@
         box-sizing: border-box;
     }
 
+    /* Make detail cards fully readable on small screens */
+    .about-container { flex-direction: column; gap: 1rem; }
+
+    .details-container{
+        overflow: visible; /* allow lists to expand */
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+    }
+
+    /* hide decorative left stripe on small screens to avoid overlap */
+    .details-container::before{ display: none; }
+
+    .details-container ul { max-height: none; }
+
     /* Make images responsive and prevent overflow on small screens */
     section img,
     .section__pic-container img,

@@ -426,15 +426,19 @@ section {
 
 /* vertical accent stripe on the left of each details card */
 .details-container::before{
+    /* removed absolute stripe on base styles — replaced by border-left on larger screens */
     content: "";
-    position: absolute;
-    left: 0;
-    top: 14%;
-    bottom: 14%;
-    width: 6px;
-    background: linear-gradient(180deg,#8df19a,#1aec5c);
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+    display: none;
+}
+
+/* Use a colored border on larger screens instead of the absolute ::before stripe */
+@media (min-width: 701px) {
+    .details-container{
+        border-left: 6px solid transparent;
+        border-image: linear-gradient(180deg,#8df19a,#1aec5c) 1;
+        /* slightly reduce left padding since border occupies space */
+        padding-left: 1.75rem;
+    }
 }
 
 /* small underline under the section title */
