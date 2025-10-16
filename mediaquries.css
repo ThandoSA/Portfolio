@@ -6,7 +6,7 @@
         display:flex;
     }
     #experience,
-    .exprience-details-container{
+    .experience-detail-container{
         margin-top: 2rem;
     }
     #profile,
@@ -34,8 +34,10 @@
 }
 
 @media screen and (max-width: 600px) {
+    /* avoid fixed viewport heights on small screens to prevent clipping */
     #contact, footer{
-        height: 40vh;
+        /* allow content to size naturally on mobile */
+        min-height: fit-content;
     }
     #profile{
         height: 80vh;
