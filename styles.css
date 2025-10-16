@@ -8,6 +8,11 @@ body {
     line-height: 1.6;
 }
 
+/* Improve desktop readability */
+body {
+    font-size: 18px; /* base for rem calculations */
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -35,6 +40,9 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+/* Base desktop sizing: make rem calculations larger for readability */
+html { font-size: 18px; }
 
 p {
     color: rgb(0, 0, 0);
@@ -229,10 +237,10 @@ a:hover {
 
 /* Sections */
 section {
-    padding-top: 4vh;
-    /* avoid forcing sections to viewport height; let content flow */
-    min-height: 60vh;
-    margin: 0 6rem;
+    padding: 4rem 2rem;
+    /* content area constrained to a readable width on desktop */
+    max-width: var(--page-max);
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
@@ -298,13 +306,31 @@ section {
 
 .title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 700;
     color: #222;
-    margin: 1.5rem 0 2rem 0;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin: 1.25rem 0 1.5rem 0;
+    letter-spacing: 1px;
 }
+
+/* General paragraph sizing and card text for desktop */
+section p,
+.section__text p,
+.text-container p{
+    font-size: 1.05rem;
+}
+
+.details-container p,
+.details-container ul,
+.details-container li{
+    font-size: 1rem;
+}
+
+.article-container article p{
+    font-size: 1rem;
+}
+
+.project-btn{ font-size: 1rem; padding: 0.9rem 1.25rem; }
 
 #social-container{
     display: flex;
@@ -540,13 +566,13 @@ section {
 .experience-sub-title{
     color: rgb(85, 85, 85);
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     margin-bottom: 1rem;
 }
 
 /* Experience & Education specific styling */
 .details-container h3{
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     margin: 0 0 0.5rem 0;
     color: #0f1720;
 }
@@ -554,7 +580,7 @@ section {
 .details-container p strong{
     display:block;
     color:#0b1220;
-    font-size:0.98rem;
+    font-size:1rem;
     margin-bottom:0.5rem;
 }
 
@@ -581,7 +607,7 @@ section {
 .details-container:after{ content: ""; display: block; clear: both; }
 
 .details-container p, .details-container ul, .details-container li{
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.4;
     color: #374151;
     word-break: break-word;
@@ -625,6 +651,17 @@ section {
     align-items: flex-start;
     flex-wrap: wrap;
 }
+
+/* Horizontal experience grid: group the frontend/backend cards */
+.experience-grid{
+    display:flex;
+    gap:1.5rem;
+    justify-content:center;
+    align-items:flex-start;
+    flex-wrap:wrap;
+}
+
+.experience-grid .experience-detail-container{ flex:0 1 460px; max-width: 520px; }
 
 #experience .details-container{
     flex: 0 1 320px;
@@ -893,8 +930,17 @@ section {
 footer{
     text-align: center;
     padding: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     background: #f4f4f4;
     border-top: 1px solid #ddd;
+}
+
+/* Page variables */
+:root{
+    --accent: limegreen;
+    --text: #111;
+    --muted: #555;
+    --page-max: 1200px;
+    --gutter: 2rem;
 }
